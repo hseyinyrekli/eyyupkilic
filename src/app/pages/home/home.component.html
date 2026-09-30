@@ -1,0 +1,114 @@
+<!-- HERO: banner yok, arka plan tamamen koyu; boru modeli serbestçe sahnede -->
+<section class="hp-hero" #heroSection>
+    <div class="hp-hero__glow" aria-hidden="true"></div>
+    <div class="container hp-hero__inner">
+        <div class="hp-hero__text">
+            <h1 class="hp-hero__title">
+                <span>{{ "HOME.TITLE" | translate }}</span>
+                <span>{{ "HOME.TITLE2" | translate }}</span>
+            </h1>
+            <p class="hp-hero__lead">{{ "HOME.HERO_LEAD" | translate }}</p>
+            <div class="hp-hero__actions">
+                <a class="hp-btn hp-btn--white" routerLink="projelerimiz">{{ "MENU.PROJECTS" | translate }}</a>
+                <a class="hp-btn hp-btn--ghost" routerLink="iletisim">{{ "HOME.CTA_BTN" | translate }}</a>
+            </div>
+        </div>
+        <div class="hp-hero__model" #heroModel>
+            <!-- @ts-ignore: model-viewer, CUSTOM_ELEMENTS_SCHEMA ile tanımlı -->
+            <model-viewer [src]="pipeSrc" camera-controls auto-rotate rotation-per-second="10deg" exposure="1.05"
+                shadow-intensity="1" interaction-prompt="none" disable-pan></model-viewer>
+        </div>
+    </div>
+</section>
+
+<!-- BIZ KIMIZ + UZMANLIK ALANLARIMIZ (tek bölüm altında) -->
+<section class="hp-intro" appReveal>
+    <div class="hp-glow hp-glow--services" aria-hidden="true"></div>
+    <div class="container hp-intro__inner">
+        <div class="hp-intro__text">
+            <span class="hp-eyebrow">{{ "HOME.INTRO_EYEBROW" | translate }}</span>
+            <h2>{{ "HOME.INTRO_TITLE" | translate }}</h2>
+            <p class="hp-lead">{{ "HOME.TEXT1" | translate }}</p>
+        </div>
+    </div>
+    <div class="container hp-services">
+        <h3 class="hp-services__title">{{ "HOME.SERVICES_TITLE" | translate }}</h3>
+        <div class="hp-services__grid">
+            <article class="hp-service" [class.hp-service--feature]="i === 0" *ngFor="let s of services; let i = index">
+                <svg class="hp-service__icon" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
+                    <use [attr.href]="'#' + s.icon"></use>
+                </svg>
+                <h4>{{ s.t | translate }}</h4>
+                <p>{{ s.d | translate }}</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- RAKAMLAR -->
+<section class="hp-stats" appReveal>
+    <div class="container hp-stats__inner">
+        <div class="hp-stats__row">
+            <div class="hp-stat" *ngFor="let s of stats">
+                <strong>{{ s.value }}</strong>
+                <span>{{ s.label | translate }}</span>
+            </div>
+        </div>
+        <div class="hp-stats__ill">
+            <svg viewBox="0 0 640 380" aria-hidden="true"><use href="#ill-scaffold"></use></svg>
+            <div class="hp-stats__sign">
+                <strong>KILIÇ MÜHENDİSLİK</strong>
+                <span>MEKANİK &amp; TESİSAT</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROJELER -->
+<section class="hp-projects" appReveal>
+    <div class="hp-glow hp-glow--projects" aria-hidden="true"></div>
+    <div class="container">
+        <div class="hp-head">
+            <span class="hp-eyebrow">{{ "HOME.PROJECTS_EYEBROW" | translate }}</span>
+            <h2>{{ "HOME.TEXT10" | translate }}</h2>
+        </div>
+        <div class="hp-projects__grid">
+            <a class="hp-project" *ngFor="let p of featured" routerLink="projelerimiz">
+                <div class="hp-project__img"><img loading="lazy" [src]="p.img" [alt]="p.name"></div>
+                <div class="hp-project__bar">
+                    <div>
+                        <span class="hp-tag">{{ 'TYPE.' + p.type | translate }}</span>
+                        <h3>{{ p.name }}</h3>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="text-center">
+            <a class="hp-btn hp-btn--ghost" routerLink="projelerimiz">{{ "HOME.ALL_PROJECTS" | translate }}</a>
+        </div>
+    </div>
+</section>
+
+<!-- REFERANSLAR: kesintisiz kayan tek logo şeridi -->
+<section class="hp-refs" appReveal>
+    <div class="container">
+        <div class="hp-head">
+            <h2>{{ "HOME.TEXT11" | translate }}</h2>
+        </div>
+    </div>
+    <div class="hp-marquee" #marquee (mouseenter)="onMarqueeEnter()" (mouseleave)="onMarqueeLeave()"
+        (pointerdown)="onMarqueePointerDown($event)" (pointermove)="onMarqueePointerMove($event)"
+        (pointerup)="onMarqueePointerUp()" (pointercancel)="onMarqueePointerUp()">
+        <div class="hp-marquee__track">
+            <img *ngFor="let r of referencesLoop" loading="lazy" [src]="r.logo" [alt]="r.name" draggable="false">
+        </div>
+    </div>
+</section>
+
+<!-- KAPANIŞ -->
+<section class="hp-statement" appReveal>
+    <div class="container hp-statement__inner">
+        <h2>{{ "HOME.CTA_T" | translate }}</h2>
+        <a class="hp-btn hp-btn--white" routerLink="iletisim">{{ "HOME.CTA_BTN" | translate }}</a>
+    </div>
+</section>

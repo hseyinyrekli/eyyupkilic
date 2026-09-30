@@ -1,0 +1,29 @@
+<app-page-head title="MENU.GALLERY"></app-page-head>
+
+<section class="k-section">
+    <div class="container">
+        <div class="g-grid">
+            <button type="button" class="g-item" *ngFor="let src of photos; let i = index"
+                [class.g-item--wide]="i === 0 || i === 4" [class.g-item--tall]="i === 1"
+                (click)="open(i)" [attr.aria-label]="alt(src)">
+                <img loading="lazy" [src]="src" [style.object-position]="position(src)" [alt]="alt(src)">
+            </button>
+        </div>
+    </div>
+</section>
+
+<div class="g-lightbox" *ngIf="active !== null" (click)="close()" role="dialog" aria-modal="true">
+    <button type="button" class="g-lightbox__btn g-lightbox__close" (click)="close()" aria-label="Kapat">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18" /></svg>
+    </button>
+    <button type="button" class="g-lightbox__btn g-lightbox__prev" (click)="prev($event)" aria-label="Önceki">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6" /></svg>
+    </button>
+    <img class="g-lightbox__img" [src]="photos[active]" [alt]="alt(photos[active])" (click)="$event.stopPropagation()">
+    <button type="button" class="g-lightbox__btn g-lightbox__next" (click)="next($event)" aria-label="Sonraki">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6" /></svg>
+    </button>
+</div>

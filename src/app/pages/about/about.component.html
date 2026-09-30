@@ -1,0 +1,37 @@
+<app-page-head title="MENU.ABOUT"></app-page-head>
+
+<section class="a-intro">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-7">
+                <span class="k-eyebrow">{{"ABOUT.EYEBROW" | translate }}</span>
+                <p class="a-lead">{{"ABOUT.LEAD" | translate }}</p>
+                <p>{{"ABOUT.TEXT1" | translate }}</p>
+                <p>{{"ABOUT.TEXT3" | translate }}</p>
+                <p>{{"ABOUT.TEXT2" | translate }}</p>
+            </div>
+            <div class="col-lg-5">
+                <figure class="a-photo">
+                    <img src="../../../assets/uploads/team/eyyup-kilic.jpg" alt="Eyyüp Kılıç, Kılıç Mühendislik kurucusu">
+                    <figcaption>Eyyüp Kılıç</figcaption>
+                </figure>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="k-section k-section--tint">
+    <div class="container">
+        <div class="k-head">
+            <span class="k-eyebrow">{{"ABOUT.WHAT_EYEBROW" | translate }}</span>
+            <h2>{{"ABOUT.WHAT_TITLE" | translate }}</h2>
+        </div>
+        <div class="a-what">
+            <article class="a-what__item" *ngFor="let w of whatWeDo">
+                <div class="k-icon"><svg class="k-ico"><use [attr.href]="'#' + w.icon"></use></svg></div>
+                <h3>{{ w.t | translate }}</h3>
+                <p>{{ w.d | translate }}</p>
+            </article>
+        </div>
+    </div>
+</section>

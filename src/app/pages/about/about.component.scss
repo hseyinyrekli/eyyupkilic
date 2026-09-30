@@ -1,0 +1,63 @@
+/* ---------- Giriş: kartsız düz yazı + küçük fotoğraf + arka plan illüstrasyonu ---------- */
+.a-intro {
+  position: relative;
+  overflow: hidden;
+  padding: 5rem 0;
+}
+.a-lead {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+}
+.a-intro p:not(.a-lead) {
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.a-photo {
+  max-width: 260px;
+  margin: 0 auto;
+
+  img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    display: block;
+  }
+  figcaption {
+    margin-top: .8rem;
+    text-align: center;
+    font-size: .85rem;
+    color: var(--muted);
+  }
+}
+
+/* ---------- Ne yapıyoruz ---------- */
+.a-what {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.4rem;
+}
+.a-what__item {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.7rem;
+  h3 { font-size: 1rem; font-weight: 700; color: #fff; margin: 0 0 .5rem; }
+  p { color: var(--muted); font-size: .88rem; line-height: 1.55; margin: 0; }
+}
+
+@media (max-width: 1100px) {
+  .a-what { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 900px) {
+  .a-photo { max-width: 220px; }
+}
+@media (max-width: 600px) {
+  .a-what { grid-template-columns: 1fr; }
+}

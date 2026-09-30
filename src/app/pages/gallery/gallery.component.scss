@@ -1,0 +1,92 @@
+/* Bento/mozaik düzen: geniş, dikey ve kare hücreler karışık */
+.g-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 220px;
+  gap: 1rem;
+}
+.g-item {
+  display: block;
+  padding: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  cursor: pointer;
+  transition: transform .3s ease, box-shadow .3s ease;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .5s ease;
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 36px -22px rgba(0, 0, 0, .8);
+  }
+  &:hover img { transform: scale(1.06); }
+  &:focus-visible { outline: 2px solid var(--brand-light); outline-offset: 2px; }
+
+  &--wide { grid-column: span 2; }
+  &--tall { grid-row: span 2; }
+}
+
+/* ---------- Lightbox ---------- */
+.g-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: rgba(0, 0, 0, .92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  animation: g-fade .2s ease;
+}
+@keyframes g-fade { from { opacity: 0; } to { opacity: 1; } }
+.g-lightbox__img {
+  max-width: min(100%, 1100px);
+  max-height: 88vh;
+  object-fit: contain;
+  border-radius: 10px;
+  cursor: default;
+}
+.g-lightbox__btn {
+  position: fixed;
+  z-index: 501;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, .2);
+  background: rgba(255, 255, 255, .06);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background-color .2s, border-color .2s;
+  &:hover { background: rgba(255, 255, 255, .16); border-color: rgba(255, 255, 255, .4); }
+}
+.g-lightbox__close { top: 1.4rem; right: 1.4rem; }
+.g-lightbox__prev { left: 1.4rem; top: 50%; transform: translateY(-50%); }
+.g-lightbox__next { right: 1.4rem; top: 50%; transform: translateY(-50%); }
+
+@media (max-width: 600px) {
+  .g-lightbox { padding: 1rem; }
+  .g-lightbox__prev { left: .5rem; }
+  .g-lightbox__next { right: .5rem; }
+  .g-lightbox__close { top: .6rem; right: .6rem; }
+}
+
+@media (max-width: 900px) {
+  .g-grid { grid-auto-rows: 170px; }
+}
+@media (max-width: 600px) {
+  .g-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 150px; gap: .7rem; }
+  /* 2 sütunda boşluk kalmasın: ilk ve son fotoğraf tam genişlik, aradakiler ikişerli */
+  .g-item--wide { grid-column: span 1; }
+  .g-item--tall { grid-row: span 1; }
+  .g-item:first-child, .g-item:last-child { grid-column: 1 / -1; }
+}

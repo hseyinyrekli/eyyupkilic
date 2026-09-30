@@ -1,0 +1,19 @@
+<app-page-head title="MENU.REFERENCES"></app-page-head>
+
+<section class="k-section">
+    <div class="container">
+        <div class="k-head">
+            <h2>{{"REFERENCES.TEXT1" | translate }}</h2>
+            <p>{{"REFERENCES.TEXT2" | translate }}</p>
+        </div>
+        <div class="k-grid k-grid--3">
+            <article class="k-ref" *ngFor="let r of references">
+                <div class="k-ref__logo"><img loading="lazy" [src]="r.logo" [alt]="r.name"></div>
+                <div class="k-ref__row">
+                    <span>{{"REFERENCES.FIRM" | translate }}</span>
+                    <strong>{{ r.name }}</strong>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,48 @@
+<app-page-head title="MENU.CONTACT"></app-page-head>
+
+<section class="k-section">
+    <div class="container">
+        <div class="k-head">
+            <h2>{{"CONTACT.TEXT1" | translate }}</h2>
+            <p>{{"CONTACT.TEXT1_D" | translate }}</p>
+        </div>
+
+        <div class="c-grid">
+            <div class="c-info">
+                <div class="c-row">
+                    <span>{{"CONTACT.TEXT11" | translate }}</span>
+                    <strong>{{ company.contactPerson }}</strong>
+                </div>
+                <div class="c-row">
+                    <span>{{"CONTACT.TEXT2" | translate }}</span>
+                    <strong>{{ company.address }}</strong>
+                </div>
+                <div class="c-row">
+                    <span>{{"CONTACT.TEXT3" | translate }}</span>
+                    <strong>{{ company.phone }}</strong>
+                </div>
+                <div class="c-row" *ngIf="company.email">
+                    <span>{{"CONTACT.EMAIL" | translate }}</span>
+                    <strong>{{ company.email }}</strong>
+                </div>
+                <div class="c-row" *ngIf="company.hours">
+                    <span>{{"CONTACT.HOURS" | translate }}</span>
+                    <strong>{{ company.hours }}</strong>
+                </div>
+                <a class="c-call" [href]="'tel:' + company.phoneHref">{{"CONTACT.CALL" | translate }}</a>
+            </div>
+
+            <button type="button" class="c-map" *ngIf="!mapOpen" (click)="showMap()">
+                <span class="c-map__pin">
+                    <svg viewBox="0 0 24 24" width="26" height="26"><use href="#i-pin"></use></svg>
+                </span>
+                <strong>{{"CONTACT.MAP_SHOW" | translate }}</strong>
+                <span class="c-map__addr">{{ company.address }}</span>
+            </button>
+            <div class="c-map c-map--frame" *ngIf="mapOpen">
+                <iframe [src]="mapEmbedUrl" width="100%" height="100%" style="border:0" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade" title="Kılıç Mühendislik konum haritası"></iframe>
+            </div>
+        </div>
+    </div>
+</section>

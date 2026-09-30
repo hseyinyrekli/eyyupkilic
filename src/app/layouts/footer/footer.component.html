@@ -1,0 +1,28 @@
+<footer class="f">
+    <div class="container f__grid">
+        <div class="f__brand">
+            <a routerLink="" aria-label="Kılıç Mühendislik">
+                <img class="f__logo" src="../../../assets/uploads/logo/logo.png" alt="Kılıç Mühendislik Mekanik &amp; Tesisat">
+            </a>
+            <p>{{"FOOTER.TEXT1" | translate }}</p>
+        </div>
+
+        <nav class="f__col">
+            <h4>{{"FOOTER.TEXT2" | translate }}</h4>
+            <a routerLink="hakkimizda">{{"FOOTER.TEXT3" | translate }}</a>
+            <a routerLink="projelerimiz">{{"FOOTER.TEXT4" | translate }}</a>
+            <a routerLink="referanslarimiz">{{"MENU.REFERENCES" | translate }}</a>
+            <a routerLink="galeri">{{"FOOTER.TEXT5" | translate }}</a>
+            <a routerLink="iletisim">{{"FOOTER.TEXT6" | translate }}</a>
+        </nav>
+
+        <div class="f__col">
+            <h4>{{"FOOTER.TEXT7" | translate }}</h4>
+            <a [href]="'tel:' + company.phoneHref">{{ company.phone }}</a>
+            <a [href]="company.mapsLink" target="_blank" rel="noopener">{{ company.address }}</a>
+        </div>
+    </div>
+    <div class="container f__bottom">
+        <span>© {{ year }} {{ company.name }}</span>
+    </div>
+</footer>

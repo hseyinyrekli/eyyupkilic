@@ -1,0 +1,145 @@
+:root {
+  --brand: #0a6799;            /* logo mavisi: dolgu / çerçeve */
+  --brand-light: #4fb0e3;      /* koyu zeminde yazı / detay */
+  --bg: #000000;
+  --bg-alt: #0a0a0a;
+  --surface: #141414;
+  --surface-2: #1c1c1c;
+  --line: #262626;
+  --ink: #eceff2;
+  --muted: #9aa3ac;
+  --radius: 20px;
+  --bs-body-bg: #131518;
+  --bs-body-color: #eceff2;
+}
+
+html body {
+  background: var(--bg);
+  color: var(--ink);
+}
+::selection { background: var(--brand); color: #fff; }
+
+// ---------- Navbar (bootstrap üzerine) ----------
+.navbar .nav-link, .navbar .navbar-toggler { color: #dfe3e7; }
+.navbar .nav-link:hover, .navbar .nav-link.active { color: #fff; }
+.navbar .nav-link.active { box-shadow: inset 0 -2px 0 var(--brand-light); }
+
+// ---------- Bölüm ve başlıklar ----------
+.k-section { padding: 5rem 0; background: var(--bg); }
+.k-head { max-width: 680px; margin: 0 auto 3rem; text-align: center; }
+.k-head h2 { color: #fff; margin-bottom: .6rem; }
+.k-head h2::after { content: ''; display: block; width: 36px; height: 2px; background: var(--brand); margin: .9rem auto 0; }
+.k-head p { color: var(--muted); margin: 1rem 0 0; }
+
+// ---------- İkonlar ----------
+.k-ico {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex: none;
+}
+.k-icon {
+  display: grid;
+  place-items: center;
+  color: var(--brand-light);
+  margin-bottom: 1.1rem;
+  flex: none;
+  .k-ico { width: 1.7rem; height: 1.7rem; }
+}
+
+// ---------- Kartlar ----------
+.k-grid { display: grid; gap: 1.75rem; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); }
+.k-grid--3 { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 900px) { .k-grid--3 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .k-grid--3 { grid-template-columns: 1fr; } }
+
+.k-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.9rem;
+  color: var(--ink);
+  transition: border-color .2s;
+  &:hover { border-color: #3a4046; }
+  h3 { font-size: 1.1rem; font-weight: 600; margin: 0 0 .5rem; color: #fff; }
+  p { color: var(--muted); margin: 0; }
+}
+.k-tag {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--brand-light);
+}
+
+// ---------- Referans kartı (koyu, satırlı) ----------
+.k-ref {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.4rem;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  transition: border-color .2s;
+  &:hover { border-color: #3a4046; }
+  &__logo {
+    height: 150px;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1.2rem;
+    img { max-width: 100%; max-height: 84px; object-fit: contain; }
+  }
+  &__row {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: .95rem .2rem;
+    border-top: 1px solid var(--line);
+    span { flex: 0 0 96px; font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
+    strong { font-weight: 500; font-size: 1rem; line-height: 1.35; }
+  }
+}
+
+// ---------- İç sayfa başlığı ----------
+.page-head {
+  position: relative;
+  overflow: hidden;
+  padding: 8rem 0 3rem;
+  background: var(--bg-alt);
+  border-bottom: 1px solid var(--line);
+  h1 { color: #fff; font-weight: 600; margin: .4rem 0 0; }
+}
+.crumb {
+  font-size: .9rem;
+  color: var(--muted);
+  a { color: var(--muted); text-decoration: none; &:hover { color: #fff; } }
+  span { margin: 0 .35rem; }
+}
+.page-head__ill {
+  position: absolute;
+  right: 3rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 320px;
+  height: auto;
+  color: var(--muted);
+  opacity: .4;
+  pointer-events: none;
+}
+@media (max-width: 900px) {
+  .page-head__ill { width: 240px; opacity: .3; }
+}
+@media (max-width: 600px) {
+  .page-head__ill { display: none; }
+}

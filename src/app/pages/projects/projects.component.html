@@ -1,0 +1,23 @@
+<app-page-head title="MENU.PROJECTS"></app-page-head>
+
+<section class="k-section">
+    <div class="container">
+        <div class="k-head">
+            <h2>{{"PROJECTS.TEXT1" | translate }}</h2>
+            <p>{{"PROJECTS.TEXT2" | translate }}</p>
+        </div>
+        <div class="p-grid">
+            <article class="p-card" *ngFor="let p of projects">
+                <div class="p-card__img"><img loading="lazy" [src]="p.img" [alt]="p.name"></div>
+                <div class="p-card__bar">
+                    <div>
+                        <span class="k-tag">{{ 'TYPE.' + p.type | translate }}</span>
+                        <h3>{{ p.name }}</h3>
+                        <span class="p-card__city">{{ p.city }}</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+        <p class="p-note">{{"PROJECTS.NOTE" | translate }}</p>
+    </div>
+</section>

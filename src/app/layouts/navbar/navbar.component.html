@@ -1,0 +1,61 @@
+<nav class="navbar navbar-expand-lg" [ngClass]="setClass()">
+    <div class="container-fluid">
+        <a routerLink="" title="Logo"> <img height="44" width="166" class="m-1 d-none d-lg-block" (click)="closeMenu1()"
+                src="../../../assets/uploads/logo/logo.png" alt="Kılıç Mühendislik Mekanik &amp; Tesisat" /></a>
+        <div class="nav__mobile-row d-lg-none">
+            <a routerLink="" (click)="closeMenu1()" title="Anasayfa" class="nav__mark">
+                <img height="40" width="40" src="../../../assets/uploads/logo/mark.png" alt="Kılıç Mühendislik" />
+            </a>
+            <button type="button" class="navbar-toggler nav__toggle" data-bs-toggle="collapse"
+                (click)="closeMenu1()" data-bs-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2"
+                aria-expanded="false" [attr.aria-label]="'MENU.OPEN' | translate">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
+                    viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+                </svg>
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse text-center" id="navbarSupportedContent2">
+            <ul id="list" class="navbar-nav">
+                <li (click)="closeMenu()" class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+                        routerLink="projelerimiz">
+                        {{"MENU.PROJECTS" | translate }}
+                    </a>
+                </li>
+
+                <li (click)="closeMenu()" class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+                        routerLink="hakkimizda" title="Hakkımızda">
+                        {{"MENU.ABOUT" | translate }}
+                    </a>
+                </li>
+
+                <li (click)="closeMenu()" class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+                        routerLink="referanslarimiz">
+                        {{"MENU.REFERENCES" | translate }}
+                    </a>
+                </li>
+
+                <li (click)="closeMenu()" class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+                        routerLink="galeri">
+                        {{"MENU.GALLERY" | translate }}
+                    </a>
+                </li>
+
+                <li (click)="closeMenu()" class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+                        routerLink="iletisim" title="İletişim">
+                        {{"MENU.CONTACT" | translate }}
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+</nav>
